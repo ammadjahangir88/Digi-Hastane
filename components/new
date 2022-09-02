@@ -1,0 +1,37 @@
+import { StyleSheet, Text, View,SafeAreaView } from 'react-native'
+import React,{useState} from 'react'
+import { RNCamera } from 'react-native-camera'
+
+export default function ScanQR()
+ {
+  const [Check,setCheck]=useState('')
+  let i=0;
+  const barcodeReadHandler=({data})=>{
+    i++;
+    setCheck(data)
+    if (i==1)
+    {
+      
+      console.log("QR Code Data "+ data)
+    }
+  }
+  return (
+    <SafeAreaView>
+      <RNCamera style={styles.camera}
+      onBarCodeRead={barcodeReadHandler}
+      captureAudio={false}
+      />
+      <View>
+      <Text>{Check}</Text>
+      </View>
+     </SafeAreaView>
+  )
+}
+
+const styles = StyleSheet.create({
+  camera:{
+    height:250,
+    width:'80%',
+    justifyContent:'center'
+  }
+})

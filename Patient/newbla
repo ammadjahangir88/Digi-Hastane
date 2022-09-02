@@ -1,0 +1,27 @@
+   <Tab.Navigator
+    initialRouteName={HomeScreen}
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
+        let rn = route.name;
+
+        if (rn === Home) {
+          iconName = focused ? 'home' : 'home-outline';
+
+        } else if (rn === ScanQRcode) {
+          iconName = focused ? 'ScanQRcode' : 'list-outline';
+
+        } else if (rn === settingsName) {
+          iconName = focused ? 'Settings' : 'settings-outline';
+        }
+
+        // You can return any component that you like here!
+        return <Ionicons name={iconName} size={size} color={color} />;
+      },
+    })},
+    
+    tabBarOptions={{
+      
+      labelStyle: { paddingBottom: 10, fontSize: 10 },
+      style: { padding: 10, height: 70}
+    }}>
